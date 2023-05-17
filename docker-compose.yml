@@ -1,11 +1,13 @@
-# File docker_phx/docker-compose.yml
 version: "3.5"
-
 
 networks:
   webnet:
     driver: overlay
-    attachable: true # Needed in order to run custom commands in the container
+    attachable: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
 
 services:
   app:
